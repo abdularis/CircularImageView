@@ -92,6 +92,7 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:src="@drawable/figure"
+            android:onClick="onCircleImageClick"
             app:strokeColor="@color/colorAccent"/>
     </LinearLayout>
 
