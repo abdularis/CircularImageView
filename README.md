@@ -7,7 +7,9 @@ This library provides you circle and avatar imageview for android. it automatica
 
 ## Usage
 - Creating circle image view
+
 ![](screenshots/fig2.png)
+
 ~~~xml
 <com.github.abdularis.civ.CircleImageView
             android:layout_width="100dp"
@@ -25,8 +27,11 @@ This library provides you circle and avatar imageview for android. it automatica
 ~~~
 
 - Creating avatar
+
 ![](screenshots/fig1.png)
+
 You can choose either for avatar_state, IMAGE or INITIAL_LETTER to show the letter (default is INITIAL_LETTER)
+
 ~~~xml
 <com.github.abdularis.civ.AvatarImageView
             android:layout_width="60dp"
