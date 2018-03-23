@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="strokeColor" format="color"/>
+        <attr name="strokeWidth" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="AvatarImageView">
+        <attr name="avatar_backgroundColor" format="color"/>
+        <attr name="avatar_textSize" format="dimension"/>
+        <attr name="avatar_textColor" format="color"/>
+        <attr name="avatar_text" format="string"/>
+        <attr name="avatar_state" format="enum">
+            <enum name="INITIAL_LETTER" value="1"/>
+            <enum name="IMAGE" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>
