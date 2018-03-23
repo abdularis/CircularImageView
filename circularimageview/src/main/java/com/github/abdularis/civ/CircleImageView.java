@@ -14,10 +14,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 
-public class CircleImageView extends AppCompatImageView {
+public class CircleImageView extends ImageView {
 
     private Shader mBitmapShader;
     private Matrix mShaderMatrix;
