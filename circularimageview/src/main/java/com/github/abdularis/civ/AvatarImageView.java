@@ -78,7 +78,7 @@ public class AvatarImageView extends CircleImageView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mBackgroundBounds.set(0, 0, getWidth(), getHeight());
+        mBackgroundBounds.set(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
     }
 
     @Override

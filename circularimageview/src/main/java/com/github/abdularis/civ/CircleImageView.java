@@ -94,7 +94,7 @@ public class CircleImageView extends ImageView {
         super.onSizeChanged(w, h, oldw, oldh);
 
         float halfStrokeWidth = mStrokePaint.getStrokeWidth() / 2f;
-        mBitmapDrawBounds.set(0, 0, getWidth(), getHeight());
+        mBitmapDrawBounds.set(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
         mStrokeBounds.set(mBitmapDrawBounds);
         mStrokeBounds.inset(halfStrokeWidth, halfStrokeWidth);
 
@@ -153,20 +153,23 @@ public class CircleImageView extends ImageView {
     private void updateBitmapSize() {
         if (mBitmap == null) return;
 
-        float dx = 0;
-        float dy = 0;
+        float dx;
+        float dy;
         float scale;
 
         // scale up/down with respect to this view size and maintain aspect ratio
+        // translate bitmap position with dx/dy to the center of the image
         if (mBitmap.getWidth() < mBitmap.getHeight()) {
-            scale = (float)getWidth() / (float)mBitmap.getWidth();
-            dy = (mBitmap.getHeight() * scale) * 0.5f - (getHeight() * 0.5f);
+            scale = mBitmapDrawBounds.width() / (float)mBitmap.getWidth();
+            dx = getPaddingLeft();
+            dy = getPaddingTop() - (mBitmap.getHeight() * scale / 2f) + (mBitmapDrawBounds.width() / 2f);
         } else {
-            scale = (float)getHeight() / (float)mBitmap.getHeight();
-            dx = (mBitmap.getWidth() * scale) * 0.5f - (getWidth() * 0.5f);
+            scale = mBitmapDrawBounds.height() / (float)mBitmap.getHeight();
+            dx = getPaddingLeft() - (mBitmap.getWidth() * scale / 2f) + (mBitmapDrawBounds.width() / 2f);
+            dy = getPaddingTop();
         }
         mShaderMatrix.setScale(scale, scale);
-        mShaderMatrix.postTranslate(-dx, -dy);
+        mShaderMatrix.postTranslate(dx, dy);
         mBitmapShader.setLocalMatrix(mShaderMatrix);
     }
 
