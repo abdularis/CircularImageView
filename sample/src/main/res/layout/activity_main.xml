@@ -27,6 +27,8 @@
         <com.github.abdularis.civ.AvatarImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:src="@drawable/figure"
+            android:onClick="onAClick"
             app:avatar_backgroundColor="@color/colorAccent"
             app:avatar_text="A"
             app:avatar_textSize="22sp"
@@ -56,7 +58,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/figure"
+            android:padding="0dp"
+            android:src="@drawable/figure2"
             app:avatar_state="IMAGE"
             app:avatar_backgroundColor="#1976D2"
             app:avatar_text="B"
@@ -91,7 +94,8 @@
         <com.github.abdularis.civ.CircleImageView
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:src="@drawable/figure"
+            android:padding="20dp"
+            android:src="@drawable/figure2"
             android:onClick="onCircleImageClick"
             app:strokeColor="@color/colorAccent"/>
     </LinearLayout>
