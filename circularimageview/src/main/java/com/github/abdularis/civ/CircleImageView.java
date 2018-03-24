@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,9 +16,12 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.ImageView;
 
 public class CircleImageView extends ImageView {
+
+    private static final int DEF_PRESS_HIGHLIGHT_COLOR = 0x32000000;
 
     private Shader mBitmapShader;
     private Matrix mShaderMatrix;
@@ -29,8 +33,10 @@ public class CircleImageView extends ImageView {
 
     private Paint mBitmapPaint;
     private Paint mStrokePaint;
+    private Paint mPressedPaint;
 
     private boolean mInitialized;
+    private boolean mPressed;
 
     public CircleImageView(Context context) {
         this(context, null);
@@ -59,6 +65,10 @@ public class CircleImageView extends ImageView {
         mStrokePaint.setColor(strokeColor);
         mStrokePaint.setStyle(Paint.Style.STROKE);
         mStrokePaint.setStrokeWidth(strokeWidth);
+
+        mPressedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPressedPaint.setColor(DEF_PRESS_HIGHLIGHT_COLOR);
+        mPressedPaint.setStyle(Paint.Style.FILL);
 
         mInitialized = true;
 
@@ -102,9 +112,36 @@ public class CircleImageView extends ImageView {
     }
 
     @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        if (!isCoordinateInCircle(event.getX(), event.getY())) {
+            return false;
+        }
+
+        boolean processed = false;
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                processed = true;
+                mPressed = true;
+                invalidate();
+                break;
+            case MotionEvent.ACTION_CANCEL:
+            case MotionEvent.ACTION_UP:
+                processed = true;
+                mPressed = false;
+                invalidate();
+                break;
+        }
+        return super.onTouchEvent(event) || processed;
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         drawBitmap(canvas);
         drawStroke(canvas);
+        if (mPressed) {
+            canvas.drawOval(mBitmapDrawBounds, mPressedPaint);
+        }
     }
 
     public int getStrokeColor() {
@@ -191,5 +228,16 @@ public class CircleImageView extends ImageView {
         drawable.draw(canvas);
 
         return bitmap;
+    }
+
+    private boolean isCoordinateInCircle(float x, float y) {
+        // tentukan apakah titik x/y berada pada lingkarang (circle image view) ini dengan euclidean
+        // distance dan jari-jarinya
+        //
+        // karena titik x/y dari touch event tidak berpusat ditengah melainkan kiri atas, maka
+        // kita ketengahkan titik tersebut dengan mengurangi x dengan titik tengah view
+        // (setengan width view) (x - this.centerX) dan -y + this.centerY
+        PointF centeredPoint = new PointF(x - mBitmapDrawBounds.centerX(), (-y) + mBitmapDrawBounds.centerY());
+        return centeredPoint.length() <= (mBitmapDrawBounds.width() / 2f);
     }
 }
