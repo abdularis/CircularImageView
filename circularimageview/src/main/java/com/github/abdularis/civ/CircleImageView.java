@@ -113,14 +113,12 @@ public class CircleImageView extends ImageView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
-        if (!isCoordinateInCircle(event.getX(), event.getY())) {
-            return false;
-        }
-
         boolean processed = false;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if (!isCoordinateInCircle(event.getX(), event.getY())) {
+                    return false;
+                }
                 processed = true;
                 mPressed = true;
                 invalidate();
@@ -130,6 +128,9 @@ public class CircleImageView extends ImageView {
                 processed = true;
                 mPressed = false;
                 invalidate();
+                if (!isCoordinateInCircle(event.getX(), event.getY())) {
+                    return false;
+                }
                 break;
         }
         return super.onTouchEvent(event) || processed;
