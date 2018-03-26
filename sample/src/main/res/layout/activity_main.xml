@@ -39,6 +39,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="8dp"
+            android:paddingRight="10dp"
             app:avatar_backgroundColor="#8E24AA"
             app:avatar_text="B"
             app:avatar_textSize="22sp"
@@ -85,16 +86,18 @@
         android:orientation="horizontal">
         <com.github.abdularis.civ.CircleImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="170dp"
             android:layout_marginRight="8dp"
             android:src="@drawable/figure"
             app:strokeColor="@color/colorAccent"
             app:strokeWidth="2px"/>
 
         <com.github.abdularis.civ.CircleImageView
-            android:layout_width="180dp"
+            android:layout_width="160dp"
             android:layout_height="180dp"
-            android:padding="20dp"
+            android:background="@color/colorAccent"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
             android:src="@drawable/figure2"
             android:onClick="onCircleImageClick"
             app:strokeColor="@color/colorAccent"/>
