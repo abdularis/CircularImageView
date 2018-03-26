@@ -104,7 +104,7 @@ public class CircleImageView extends ImageView {
         super.onSizeChanged(w, h, oldw, oldh);
 
         float halfStrokeWidth = mStrokePaint.getStrokeWidth() / 2f;
-        mBitmapDrawBounds.set(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
+        updateCircleDrawBounds(mBitmapDrawBounds);
         mStrokeBounds.set(mBitmapDrawBounds);
         mStrokeBounds.inset(halfStrokeWidth, halfStrokeWidth);
 
@@ -173,6 +173,22 @@ public class CircleImageView extends ImageView {
         canvas.drawOval(mBitmapDrawBounds, mBitmapPaint);
     }
 
+    protected void updateCircleDrawBounds(RectF bounds) {
+        float contentWidth = getWidth() - getPaddingLeft() - getPaddingRight();
+        float contentHeight = getHeight() - getPaddingTop() - getPaddingBottom();
+
+        float left = getPaddingLeft();
+        float top = getPaddingTop();
+        if (contentWidth > contentHeight) {
+            left += (contentWidth - contentHeight) / 2f;
+        } else {
+            top += (contentHeight - contentWidth) / 2f;
+        }
+
+        float diameter = Math.min(contentWidth, contentHeight);
+        bounds.set(left, top, left + diameter, top + diameter);
+    }
+
     private void setupBitmap() {
         if (!mInitialized) {
             return;
@@ -199,12 +215,12 @@ public class CircleImageView extends ImageView {
         // translate bitmap position with dx/dy to the center of the image
         if (mBitmap.getWidth() < mBitmap.getHeight()) {
             scale = mBitmapDrawBounds.width() / (float)mBitmap.getWidth();
-            dx = getPaddingLeft();
-            dy = getPaddingTop() - (mBitmap.getHeight() * scale / 2f) + (mBitmapDrawBounds.width() / 2f);
+            dx = mBitmapDrawBounds.left;
+            dy = mBitmapDrawBounds.top - (mBitmap.getHeight() * scale / 2f) + (mBitmapDrawBounds.width() / 2f);
         } else {
             scale = mBitmapDrawBounds.height() / (float)mBitmap.getHeight();
-            dx = getPaddingLeft() - (mBitmap.getWidth() * scale / 2f) + (mBitmapDrawBounds.width() / 2f);
-            dy = getPaddingTop();
+            dx = mBitmapDrawBounds.left - (mBitmap.getWidth() * scale / 2f) + (mBitmapDrawBounds.width() / 2f);
+            dy = mBitmapDrawBounds.top;
         }
         mShaderMatrix.setScale(scale, scale);
         mShaderMatrix.postTranslate(dx, dy);
