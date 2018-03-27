@@ -15,13 +15,13 @@ import android.util.AttributeSet;
 
 public class AvatarImageView extends CircleImageView {
 
-    public static final int SHOW_INITIAL_LETTER = 1;
+    public static final int SHOW_INITIAL = 1;
     public static final int SHOW_IMAGE = 2;
 
-    private static final String DEF_INITIAL_LETTER = "A";
+    private static final String DEF_INITIAL = "A";
     private static final int DEF_TEXT_SIZE = 90;
     private static final int DEF_BACKGROUND_COLOR = 0xE53935;
-    private static final int DEF_STATE = SHOW_INITIAL_LETTER;
+    private static final int DEF_STATE = SHOW_INITIAL;
 
     private Paint mTextPaint;
     private Rect mTextBounds;
@@ -29,7 +29,7 @@ public class AvatarImageView extends CircleImageView {
     private Paint mBackgroundPaint;
     private RectF mBackgroundBounds;
 
-    private String mInitialLetter;
+    private String mInitial;
 
     private int mShowState;
 
@@ -40,7 +40,7 @@ public class AvatarImageView extends CircleImageView {
     public AvatarImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        String initWord = DEF_INITIAL_LETTER;
+        String initial = DEF_INITIAL;
         int textColor = Color.WHITE;
         int textSize = DEF_TEXT_SIZE;
         int backgroundColor = DEF_BACKGROUND_COLOR;
@@ -49,7 +49,7 @@ public class AvatarImageView extends CircleImageView {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AvatarImageView, 0, 0);
 
-            initWord = a.getString(R.styleable.AvatarImageView_avatar_text);
+            initial = a.getString(R.styleable.AvatarImageView_avatar_text);
             textColor = a.getColor(R.styleable.AvatarImageView_avatar_textColor, textColor);
             textSize = a.getDimensionPixelSize(R.styleable.AvatarImageView_avatar_textSize, textSize);
             backgroundColor = a.getColor(R.styleable.AvatarImageView_avatar_backgroundColor, backgroundColor);
@@ -65,7 +65,7 @@ public class AvatarImageView extends CircleImageView {
         mTextPaint.setTextSize(textSize);
 
         mTextBounds = new Rect();
-        mInitialLetter = getFirstLetter(initWord);
+        mInitial = extractInitial(initial);
         updateTextBounds();
 
         mBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -83,22 +83,22 @@ public class AvatarImageView extends CircleImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (mShowState == SHOW_INITIAL_LETTER) {
+        if (mShowState == SHOW_INITIAL) {
             float textBottom = mBackgroundBounds.centerY() - mTextBounds.exactCenterY();
             canvas.drawOval(mBackgroundBounds, mBackgroundPaint);
-            canvas.drawText(mInitialLetter, mBackgroundBounds.centerX(), textBottom, mTextPaint);
+            canvas.drawText(mInitial, mBackgroundBounds.centerX(), textBottom, mTextPaint);
             drawStroke(canvas);
         } else {
             super.onDraw(canvas);
         }
     }
 
-    public String getIntialLetter() {
-        return mInitialLetter;
+    public String getInitial() {
+        return mInitial;
     }
 
-    public void setInitialLetter(String letter) {
-        mInitialLetter = getFirstLetter(letter);
+    public void setInitial(String letter) {
+        mInitial = extractInitial(letter);
         updateTextBounds();
         invalidate();
     }
@@ -108,19 +108,19 @@ public class AvatarImageView extends CircleImageView {
     }
 
     public void setState(int state) {
-        if (state != SHOW_INITIAL_LETTER && state != SHOW_IMAGE) {
-            String msg = "Illegal avatar state value: " + state + ", use either SHOW_INITIAL_LETTER or SHOW_IMAGE constant";
+        if (state != SHOW_INITIAL && state != SHOW_IMAGE) {
+            String msg = "Illegal avatar state value: " + state + ", use either SHOW_INITIAL or SHOW_IMAGE constant";
             throw new IllegalArgumentException(msg);
         }
         mShowState = state;
         invalidate();
     }
 
-    public float getLetterSize() {
+    public float getTextSize() {
         return mTextPaint.getTextSize();
     }
 
-    public void setLetterSize(float size) {
+    public void setTextSize(float size) {
         mTextPaint.setTextSize(size);
         updateTextBounds();
         invalidate();
@@ -144,12 +144,12 @@ public class AvatarImageView extends CircleImageView {
         invalidate();
     }
 
-    private String getFirstLetter(String letter) {
+    private String extractInitial(String letter) {
         if (letter == null || letter.trim().length() <= 0) return "?";
         return String.valueOf(letter.charAt(0));
     }
 
     private void updateTextBounds() {
-        mTextPaint.getTextBounds(mInitialLetter, 0, mInitialLetter.length(), mTextBounds);
+        mTextPaint.getTextBounds(mInitial, 0, mInitial.length(), mTextBounds);
     }
 }

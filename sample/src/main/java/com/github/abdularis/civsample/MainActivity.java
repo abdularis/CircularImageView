@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onAClick(View view) {
         AvatarImageView a = (AvatarImageView) view;
-        if (a.getState() == AvatarImageView.SHOW_INITIAL_LETTER) {
+        if (a.getState() == AvatarImageView.SHOW_INITIAL) {
             a.setState(AvatarImageView.SHOW_IMAGE);
         } else {
-            a.setState(AvatarImageView.SHOW_INITIAL_LETTER);
+            a.setState(AvatarImageView.SHOW_INITIAL);
         }
     }
 }

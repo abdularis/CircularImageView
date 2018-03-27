@@ -11,7 +11,7 @@
         <attr name="avatar_textColor" format="color"/>
         <attr name="avatar_text" format="string"/>
         <attr name="avatar_state" format="enum">
-            <enum name="INITIAL_LETTER" value="1"/>
+            <enum name="INITIAL" value="1"/>
             <enum name="IMAGE" value="2"/>
         </attr>
     </declare-styleable>
