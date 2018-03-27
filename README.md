@@ -30,7 +30,7 @@ This library provides you circle and avatar imageview for android. it automatica
 
 ![](screenshots/fig1.png)
 
-You can choose either for avatar_state, IMAGE or INITIAL_LETTER to show the letter (default is INITIAL_LETTER)
+You can choose either for avatar_state, IMAGE or INITIAL to show the first letter (default is INITIAL)
 
 ~~~xml
 <com.github.abdularis.civ.AvatarImageView
@@ -61,7 +61,7 @@ You can choose either for avatar_state, IMAGE or INITIAL_LETTER to show the lett
         <attr name="avatar_textColor" format="color"/>
         <attr name="avatar_text" format="string"/>
         <attr name="avatar_state" format="enum">
-            <enum name="INITIAL_LETTER" value="1"/>
+            <enum name="INITIAL" value="1"/>
             <enum name="IMAGE" value="2"/>
         </attr>
     </declare-styleable>
