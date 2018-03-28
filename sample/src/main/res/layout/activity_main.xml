@@ -10,6 +10,13 @@
     android:background="@color/colorPrimaryDark"
     tools:context="com.github.abdularis.civsample.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:onClick="onGotoListSampleClick"
+        android:text="Goto List Item Sample"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
