@@ -1,11 +1,38 @@
 # Android Circular Image View
+[![](https://jitpack.io/v/abdularis/CircularImageView.svg)](https://jitpack.io/#abdularis/CircularImageView)
+
 This library provides you circle and avatar imageview for android. it automatically scale and center a bitmap based on the size of the view but does not copy the bitmap itself.
 > this project was inspired by [hdodenhof CircleImageView](https://github.com/hdodenhof/CircleImageView)
 
 ## Screenshot
+![](demo.gif)
+
 ![](screenshots/screenshot.png)
 
+## Setup
+- **Step 1** Add repository into root build.gradle
+
+~~~xml
+allprojects {
+    repositories {
+    ...
+    maven {
+        url 'https://jitpack.io' }
+    }
+}
+~~~
+
+- **Step 2** Add library dependency into app build.gradle
+
+~~~xml
+dependencies {
+    compile 'com.github.abdularis:CircularImageView:v1.0'
+}
+~~~
+
 ## Usage
+Check also the sample app
+
 - Creating circle image view
 
 ![](screenshots/fig2.png)
