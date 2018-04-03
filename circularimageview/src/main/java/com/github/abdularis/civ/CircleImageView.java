@@ -37,6 +37,7 @@ public class CircleImageView extends ImageView {
 
     private boolean mInitialized;
     private boolean mPressed;
+    private boolean mHighlightEnable;
 
     public CircleImageView(Context context) {
         this(context, null);
@@ -47,12 +48,16 @@ public class CircleImageView extends ImageView {
 
         int strokeColor = Color.TRANSPARENT;
         float strokeWidth = 0;
+        boolean highlightEnable = true;
+        int highlightColor = DEF_PRESS_HIGHLIGHT_COLOR;
 
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, 0, 0);
 
             strokeColor = a.getColor(R.styleable.CircleImageView_strokeColor, Color.TRANSPARENT);
             strokeWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_strokeWidth, 0);
+            highlightEnable = a.getBoolean(R.styleable.CircleImageView_highlightEnable, true);
+            highlightColor = a.getColor(R.styleable.CircleImageView_highlightColor, DEF_PRESS_HIGHLIGHT_COLOR);
 
             a.recycle();
         }
@@ -67,9 +72,10 @@ public class CircleImageView extends ImageView {
         mStrokePaint.setStrokeWidth(strokeWidth);
 
         mPressedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPressedPaint.setColor(DEF_PRESS_HIGHLIGHT_COLOR);
+        mPressedPaint.setColor(highlightColor);
         mPressedPaint.setStyle(Paint.Style.FILL);
 
+        mHighlightEnable = highlightEnable;
         mInitialized = true;
 
         setupBitmap();
@@ -143,6 +149,24 @@ public class CircleImageView extends ImageView {
         drawHighlight(canvas);
     }
 
+    public boolean isHighlightEnable() {
+        return mHighlightEnable;
+    }
+
+    public void setHighlightEnable(boolean enable) {
+        mHighlightEnable = enable;
+        invalidate();
+    }
+
+    public int getHighlightColor() {
+        return mPressedPaint.getColor();
+    }
+
+    public void setHighlightColor(int color) {
+        mPressedPaint.setColor(color);
+        invalidate();
+    }
+
     public int getStrokeColor() {
         return mStrokePaint.getColor();
     }
@@ -162,7 +186,7 @@ public class CircleImageView extends ImageView {
     }
 
     protected void drawHighlight(Canvas canvas) {
-        if (mPressed) {
+        if (mHighlightEnable && mPressed) {
             canvas.drawOval(mBitmapDrawBounds, mPressedPaint);
         }
     }
