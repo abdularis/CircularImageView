@@ -47,6 +47,7 @@
             android:layout_height="60dp"
             android:layout_marginLeft="8dp"
             android:paddingRight="10dp"
+            app:highlightEnable="false"
             app:avatar_backgroundColor="#8E24AA"
             app:avatar_text="B"
             app:avatar_textSize="22sp"
@@ -96,6 +97,7 @@
             android:layout_height="170dp"
             android:layout_marginRight="8dp"
             android:src="@drawable/figure"
+            app:highlightColor="#801970ea"
             app:strokeColor="@color/colorAccent"
             app:strokeWidth="2px"/>
 
