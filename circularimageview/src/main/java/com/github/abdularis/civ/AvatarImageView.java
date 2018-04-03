@@ -88,6 +88,7 @@ public class AvatarImageView extends CircleImageView {
             canvas.drawOval(mBackgroundBounds, mBackgroundPaint);
             canvas.drawText(mInitial, mBackgroundBounds.centerX(), textBottom, mTextPaint);
             drawStroke(canvas);
+            drawHighlight(canvas);
         } else {
             super.onDraw(canvas);
         }

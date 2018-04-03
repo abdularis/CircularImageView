@@ -140,9 +140,7 @@ public class CircleImageView extends ImageView {
     protected void onDraw(Canvas canvas) {
         drawBitmap(canvas);
         drawStroke(canvas);
-        if (mPressed) {
-            canvas.drawOval(mBitmapDrawBounds, mPressedPaint);
-        }
+        drawHighlight(canvas);
     }
 
     public int getStrokeColor() {
@@ -161,6 +159,12 @@ public class CircleImageView extends ImageView {
     public void setStrokeWidth(float width) {
         mStrokePaint.setStrokeWidth(width);
         invalidate();
+    }
+
+    protected void drawHighlight(Canvas canvas) {
+        if (mPressed) {
+            canvas.drawOval(mBitmapDrawBounds, mPressedPaint);
+        }
     }
 
     protected void drawStroke(Canvas canvas) {
