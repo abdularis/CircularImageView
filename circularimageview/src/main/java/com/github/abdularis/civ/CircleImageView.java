@@ -276,13 +276,10 @@ public class CircleImageView extends ImageView {
     }
 
     private boolean isCoordinateInCircle(float x, float y) {
-        // tentukan apakah titik x/y berada pada lingkarang (circle image view) ini dengan euclidean
-        // distance dan jari-jarinya
-        //
-        // karena titik x/y dari touch event tidak berpusat ditengah melainkan kiri atas, maka
-        // kita ketengahkan titik tersebut dengan mengurangi x dengan titik tengah view
-        // (setengan width view) (x - this.centerX) dan -y + this.centerY
-        PointF centeredPoint = new PointF(x - mBitmapDrawBounds.centerX(), (-y) + mBitmapDrawBounds.centerY());
-        return centeredPoint.length() <= (mBitmapDrawBounds.width() / 2f);
+        // find the distance between center of the view and x,y point
+        double distance = Math.sqrt(
+                Math.pow(mBitmapDrawBounds.centerX() - x, 2) + Math.pow(mBitmapDrawBounds.centerY() - y, 2)
+        );
+        return distance <= (mBitmapDrawBounds.width() / 2);
     }
 }
