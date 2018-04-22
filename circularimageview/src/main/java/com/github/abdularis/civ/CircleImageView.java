@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
@@ -122,7 +121,7 @@ public class CircleImageView extends ImageView {
         boolean processed = false;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (!isCoordinateInCircle(event.getX(), event.getY())) {
+                if (!isInCircle(event.getX(), event.getY())) {
                     return false;
                 }
                 processed = true;
@@ -134,7 +133,7 @@ public class CircleImageView extends ImageView {
                 processed = true;
                 mPressed = false;
                 invalidate();
-                if (!isCoordinateInCircle(event.getX(), event.getY())) {
+                if (!isInCircle(event.getX(), event.getY())) {
                     return false;
                 }
                 break;
@@ -275,7 +274,7 @@ public class CircleImageView extends ImageView {
         return bitmap;
     }
 
-    private boolean isCoordinateInCircle(float x, float y) {
+    private boolean isInCircle(float x, float y) {
         // find the distance between center of the view and x,y point
         double distance = Math.sqrt(
                 Math.pow(mBitmapDrawBounds.centerX() - x, 2) + Math.pow(mBitmapDrawBounds.centerY() - y, 2)
