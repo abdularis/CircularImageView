@@ -8,11 +8,11 @@
     </declare-styleable>
 
     <declare-styleable name="AvatarImageView">
-        <attr name="avatar_backgroundColor" format="color"/>
-        <attr name="avatar_textSize" format="dimension"/>
-        <attr name="avatar_textColor" format="color"/>
-        <attr name="avatar_text" format="string"/>
-        <attr name="avatar_state" format="enum">
+        <attr name="avatarBackgroundColor" format="color"/>
+        <attr name="initialSize" format="dimension"/>
+        <attr name="initialColor" format="color"/>
+        <attr name="initial" format="string"/>
+        <attr name="state" format="enum">
             <enum name="INITIAL" value="1"/>
             <enum name="IMAGE" value="2"/>
         </attr>

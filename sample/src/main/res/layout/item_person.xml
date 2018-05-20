@@ -12,8 +12,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        app:avatar_backgroundColor="@color/colorAccent"
-        app:avatar_textSize="28sp"
+        app:avatarBackgroundColor="@color/colorAccent"
+        app:initialSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

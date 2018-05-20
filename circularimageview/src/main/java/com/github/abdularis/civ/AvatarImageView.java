@@ -49,11 +49,11 @@ public class AvatarImageView extends CircleImageView {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AvatarImageView, 0, 0);
 
-            initial = a.getString(R.styleable.AvatarImageView_avatar_text);
-            textColor = a.getColor(R.styleable.AvatarImageView_avatar_textColor, textColor);
-            textSize = a.getDimensionPixelSize(R.styleable.AvatarImageView_avatar_textSize, textSize);
-            backgroundColor = a.getColor(R.styleable.AvatarImageView_avatar_backgroundColor, backgroundColor);
-            showState = a.getInt(R.styleable.AvatarImageView_avatar_state, showState);
+            initial = a.getString(R.styleable.AvatarImageView_initial);
+            textColor = a.getColor(R.styleable.AvatarImageView_initialColor, textColor);
+            textSize = a.getDimensionPixelSize(R.styleable.AvatarImageView_initialSize, textSize);
+            backgroundColor = a.getColor(R.styleable.AvatarImageView_avatarBackgroundColor, backgroundColor);
+            showState = a.getInt(R.styleable.AvatarImageView_state, showState);
 
             a.recycle();
         }
@@ -117,21 +117,21 @@ public class AvatarImageView extends CircleImageView {
         invalidate();
     }
 
-    public float getTextSize() {
+    public float getInitialSize() {
         return mTextPaint.getTextSize();
     }
 
-    public void setTextSize(float size) {
+    public void setInitialSize(float size) {
         mTextPaint.setTextSize(size);
         updateTextBounds();
         invalidate();
     }
 
-    public int getTextColor() {
+    public int getInitialColor() {
         return mTextPaint.getColor();
     }
 
-    public void setTextColor(int color) {
+    public void setInitialColor(int color) {
         mTextPaint.setColor(color);
         invalidate();
     }
