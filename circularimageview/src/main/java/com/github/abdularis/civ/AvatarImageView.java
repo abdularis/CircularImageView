@@ -7,7 +7,15 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.support.annotation.ColorInt;
+import android.support.annotation.Dimension;
+import android.support.annotation.IntDef;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * Created by abdularis on 22/03/18.
@@ -18,9 +26,15 @@ public class AvatarImageView extends CircleImageView {
     public static final int SHOW_INITIAL = 1;
     public static final int SHOW_IMAGE = 2;
 
+    @IntDef({SHOW_INITIAL, SHOW_IMAGE})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface State {
+    }
+
     private static final String DEF_INITIAL = "A";
     private static final int DEF_TEXT_SIZE = 90;
     private static final int DEF_BACKGROUND_COLOR = 0xE53935;
+    @State
     private static final int DEF_STATE = SHOW_INITIAL;
 
     private Paint mTextPaint;
@@ -29,6 +43,7 @@ public class AvatarImageView extends CircleImageView {
     private Paint mBackgroundPaint;
     private RectF mBackgroundBounds;
 
+    @NonNull
     private String mInitial;
 
     private int mShowState;
@@ -94,21 +109,23 @@ public class AvatarImageView extends CircleImageView {
         }
     }
 
+    @NonNull
     public String getInitial() {
         return mInitial;
     }
 
-    public void setInitial(String letter) {
+    public void setInitial(@Nullable String letter) {
         mInitial = extractInitial(letter);
         updateTextBounds();
         invalidate();
     }
 
+    @State
     public int getState() {
         return mShowState;
     }
 
-    public void setState(int state) {
+    public void setState(@State int state) {
         if (state != SHOW_INITIAL && state != SHOW_IMAGE) {
             String msg = "Illegal avatar state value: " + state + ", use either SHOW_INITIAL or SHOW_IMAGE constant";
             throw new IllegalArgumentException(msg);
@@ -117,35 +134,39 @@ public class AvatarImageView extends CircleImageView {
         invalidate();
     }
 
+    @Dimension(unit = Dimension.PX)
     public float getTextSize() {
         return mTextPaint.getTextSize();
     }
 
-    public void setTextSize(float size) {
+    public void setTextSize(@Dimension(unit = Dimension.PX) float size) {
         mTextPaint.setTextSize(size);
         updateTextBounds();
         invalidate();
     }
 
+    @ColorInt
     public int getTextColor() {
         return mTextPaint.getColor();
     }
 
-    public void setTextColor(int color) {
+    public void setTextColor(@ColorInt int color) {
         mTextPaint.setColor(color);
         invalidate();
     }
 
+    @ColorInt
     public int getAvatarBackgroundColor() {
         return mBackgroundPaint.getColor();
     }
 
-    public void setAvatarBackgroundColor(int color) {
+    public void setAvatarBackgroundColor(@ColorInt int color) {
         mBackgroundPaint.setColor(color);
         invalidate();
     }
 
-    private String extractInitial(String letter) {
+    @NonNull
+    private String extractInitial(@Nullable String letter) {
         if (letter == null || letter.trim().length() <= 0) return "?";
         return String.valueOf(letter.charAt(0));
     }

@@ -13,6 +13,8 @@ import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -42,7 +44,7 @@ public class CircleImageView extends ImageView {
         this(context, null);
     }
 
-    public CircleImageView(Context context, AttributeSet attrs) {
+    public CircleImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
         int strokeColor = Color.TRANSPARENT;
@@ -81,7 +83,7 @@ public class CircleImageView extends ImageView {
     }
 
     @Override
-    public void setImageResource(int resId) {
+    public void setImageResource(@DrawableRes int resId) {
         super.setImageResource(resId);
         setupBitmap();
     }
@@ -93,7 +95,7 @@ public class CircleImageView extends ImageView {
     }
 
     @Override
-    public void setImageBitmap(Bitmap bm) {
+    public void setImageBitmap(@Nullable Bitmap bm) {
         super.setImageBitmap(bm);
         setupBitmap();
     }
@@ -157,20 +159,22 @@ public class CircleImageView extends ImageView {
         invalidate();
     }
 
+    @ColorInt
     public int getHighlightColor() {
         return mPressedPaint.getColor();
     }
 
-    public void setHighlightColor(int color) {
+    public void setHighlightColor(@ColorInt int color) {
         mPressedPaint.setColor(color);
         invalidate();
     }
 
+    @ColorInt
     public int getStrokeColor() {
         return mStrokePaint.getColor();
     }
 
-    public void setStrokeColor(int color) {
+    public void setStrokeColor(@ColorInt int color) {
         mStrokePaint.setColor(color);
         invalidate();
     }
