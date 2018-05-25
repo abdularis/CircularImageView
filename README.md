@@ -25,6 +25,8 @@ allprojects {
 
 - **Step 2** Add library dependency into app build.gradle
 
+> **Note:** there are changes in view xml attributes of **v1.2**, so it's slightly different from previous version (v1.1)
+
 ~~~xml
 dependencies {
     compile 'com.github.abdularis:CircularImageView:v1.2'
