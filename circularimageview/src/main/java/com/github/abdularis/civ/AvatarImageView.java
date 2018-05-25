@@ -57,7 +57,7 @@ public class AvatarImageView extends CircleImageView {
     public AvatarImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        String initial = DEF_INITIAL;
+        String text = DEF_INITIAL;
         int textColor = Color.WHITE;
         int textSize = DEF_TEXT_SIZE;
         int backgroundColor = DEF_BACKGROUND_COLOR;
@@ -66,7 +66,7 @@ public class AvatarImageView extends CircleImageView {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AvatarImageView, 0, 0);
 
-            initial = a.getString(R.styleable.AvatarImageView_text);
+            text = a.getString(R.styleable.AvatarImageView_text);
             textColor = a.getColor(R.styleable.AvatarImageView_textColor, textColor);
             textSize = a.getDimensionPixelSize(R.styleable.AvatarImageView_textSize, textSize);
             backgroundColor = a.getColor(R.styleable.AvatarImageView_avatarBackgroundColor, backgroundColor);
@@ -82,7 +82,8 @@ public class AvatarImageView extends CircleImageView {
         mTextPaint.setTextSize(textSize);
 
         mTextBounds = new Rect();
-        mInitial = extractInitial(initial);
+        mText = text == null ? "" : text;
+        mInitial = extractInitial(text);
         updateTextBounds();
 
         mBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
