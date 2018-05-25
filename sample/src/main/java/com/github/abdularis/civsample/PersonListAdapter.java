@@ -86,7 +86,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Vi
         void bind(Person p) {
             if (p.avatar == 0) {
                 avatar.setState(AvatarImageView.SHOW_INITIAL);
-                avatar.setInitial(p.name);
+                avatar.setText(p.name);
             } else {
                 avatar.setState(AvatarImageView.SHOW_IMAGE);
                 avatar.setImageResource(p.avatar);

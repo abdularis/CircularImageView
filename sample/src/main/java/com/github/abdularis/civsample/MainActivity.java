@@ -1,19 +1,24 @@
 package com.github.abdularis.civsample;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.github.abdularis.civ.AvatarImageView;
+import com.github.abdularis.civsample.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setMyName("Vatar");
+        binding.setBgColor(Color.BLUE);
     }
 
     public void onCircleImageClick(View view) {

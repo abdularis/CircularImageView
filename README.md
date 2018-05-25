@@ -27,7 +27,7 @@ allprojects {
 
 ~~~xml
 dependencies {
-    compile 'com.github.abdularis:CircularImageView:v1.1'
+    compile 'com.github.abdularis:CircularImageView:v1.2'
 }
 ~~~
 
@@ -69,9 +69,9 @@ You can choose either for avatar_state, IMAGE or INITIAL to show the first lette
     android:onClick="onAClick"
     app:strokeWidth="1dp"
     app:strokeColor="@android:color/white"
-    app:avatar_backgroundColor="@color/colorAccent"
-    app:avatar_text="A"
-    app:avatar_textSize="22sp"/>
+    app:avatarBackgroundColor="@color/colorAccent"
+    app:text="A"
+    app:textSize="22sp"/>
 
 <com.github.abdularis.civ.AvatarImageView
     android:layout_width="60dp"
@@ -79,17 +79,17 @@ You can choose either for avatar_state, IMAGE or INITIAL to show the first lette
     app:highlightEnable="false"
     app:strokeColor="#64B5F6"
     app:strokeWidth="1dp"
-    app:avatar_backgroundColor="#8E24AA"
-    app:avatar_text="B"
-    app:avatar_textSize="22sp"/>
+    app:avatarBackgroundColor="#8E24AA"
+    app:text="B"
+    app:textSize="22sp"/>
 
 <com.github.abdularis.civ.AvatarImageView
     android:layout_width="60dp"
     android:layout_height="60dp"
-    app:avatar_backgroundColor="#FDFD00"
-    app:avatar_text="C"
-    app:avatar_textSize="22sp"
-    app:avatar_textColor="#3d3d01"/>
+    app:avatarBackgroundColor="#FDFD00"
+    app:text="C"
+    app:textSize="22sp"
+    app:textColor="#3d3d01"/>
 
 <com.github.abdularis.civ.AvatarImageView
     android:layout_width="60dp"
@@ -97,10 +97,10 @@ You can choose either for avatar_state, IMAGE or INITIAL to show the first lette
     android:src="@drawable/figure2"
     app:strokeColor="#1976D2"
     app:strokeWidth="1dp"
-    app:avatar_state="IMAGE"
-    app:avatar_backgroundColor="#1976D2"
-    app:avatar_text="B"
-    app:avatar_textSize="22sp"/>
+    app:state="IMAGE"
+    app:avatarBackgroundColor="#1976D2"
+    app:text="B"
+    app:textSize="22sp"/>
 ~~~
 
 Java on view click listener
@@ -133,11 +133,11 @@ These are all attributes that you can use to customize the appearance of CircleI
     </declare-styleable>
 
     <declare-styleable name="AvatarImageView">
-        <attr name="avatar_backgroundColor" format="color"/>
-        <attr name="avatar_textSize" format="dimension"/>
-        <attr name="avatar_textColor" format="color"/>
-        <attr name="avatar_text" format="string"/>
-        <attr name="avatar_state" format="enum">
+        <attr name="avatarBackgroundColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="text" format="string"/>
+        <attr name="state" format="enum">
             <enum name="INITIAL" value="1"/>
             <enum name="IMAGE" value="2"/>
         </attr>
