@@ -64,11 +64,11 @@ public class AvatarImageView extends CircleImageView {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AvatarImageView, 0, 0);
 
-            initial = a.getString(R.styleable.AvatarImageView_avatar_text);
-            textColor = a.getColor(R.styleable.AvatarImageView_avatar_textColor, textColor);
-            textSize = a.getDimensionPixelSize(R.styleable.AvatarImageView_avatar_textSize, textSize);
-            backgroundColor = a.getColor(R.styleable.AvatarImageView_avatar_backgroundColor, backgroundColor);
-            showState = a.getInt(R.styleable.AvatarImageView_avatar_state, showState);
+            initial = a.getString(R.styleable.AvatarImageView_text);
+            textColor = a.getColor(R.styleable.AvatarImageView_textColor, textColor);
+            textSize = a.getDimensionPixelSize(R.styleable.AvatarImageView_textSize, textSize);
+            backgroundColor = a.getColor(R.styleable.AvatarImageView_avatarBackgroundColor, backgroundColor);
+            showState = a.getInt(R.styleable.AvatarImageView_state, showState);
 
             a.recycle();
         }
@@ -110,11 +110,11 @@ public class AvatarImageView extends CircleImageView {
     }
 
     @NonNull
-    public String getInitial() {
+    public String getText() {
         return mInitial;
     }
 
-    public void setInitial(@Nullable String letter) {
+    public void setText(@Nullable String letter) {
         mInitial = extractInitial(letter);
         updateTextBounds();
         invalidate();
@@ -134,12 +134,12 @@ public class AvatarImageView extends CircleImageView {
         invalidate();
     }
 
-    @Dimension(unit = Dimension.PX)
+    @Dimension
     public float getTextSize() {
         return mTextPaint.getTextSize();
     }
 
-    public void setTextSize(@Dimension(unit = Dimension.PX) float size) {
+    public void setTextSize(@Dimension float size) {
         mTextPaint.setTextSize(size);
         updateTextBounds();
         invalidate();
