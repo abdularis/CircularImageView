@@ -45,6 +45,8 @@ public class AvatarImageView extends CircleImageView {
 
     @NonNull
     private String mInitial;
+    @NonNull
+    private String mText;
 
     private int mShowState;
 
@@ -110,12 +112,18 @@ public class AvatarImageView extends CircleImageView {
     }
 
     @NonNull
-    public String getText() {
+    public String getInitial() {
         return mInitial;
     }
 
-    public void setText(@Nullable String letter) {
-        mInitial = extractInitial(letter);
+    @NonNull
+    public String getText() {
+        return mText;
+    }
+
+    public void setText(@Nullable String text) {
+        mText = text == null ? "" : text;
+        mInitial = extractInitial(text);
         updateTextBounds();
         invalidate();
     }
