@@ -46,8 +46,8 @@
                 android:src="@drawable/figure"
                 android:onClick="onAClick"
                 app:avatarBackgroundColor="@{bgColor}"
-                app:initial="@{myName}"
-                app:initialSize="22sp"
+                app:text="@{myName}"
+                app:textSize="22sp"
                 app:strokeWidth="1dp"
                 app:strokeColor="@android:color/white"/>
 
@@ -57,8 +57,8 @@
                 android:layout_marginLeft="8dp"
                 app:highlightEnable="false"
                 app:avatarBackgroundColor="#8E24AA"
-                app:initial="B"
-                app:initialSize="22sp"
+                app:text="B"
+                app:textSize="22sp"
                 app:strokeColor="#64B5F6"
                 app:strokeWidth="1dp"/>
 
@@ -67,9 +67,9 @@
                 android:layout_height="60dp"
                 android:layout_marginLeft="8dp"
                 app:avatarBackgroundColor="#FDFD00"
-                app:initial="C"
-                app:initialSize="22sp"
-                app:initialColor="#3d3d01"/>
+                app:text="C"
+                app:textSize="22sp"
+                app:textColor="#3d3d01"/>
 
             <com.github.abdularis.civ.AvatarImageView
                 android:layout_width="60dp"
@@ -78,8 +78,8 @@
                 android:src="@drawable/figure2"
                 app:state="IMAGE"
                 app:avatarBackgroundColor="#1976D2"
-                app:initial="B"
-                app:initialSize="22sp"
+                app:text="B"
+                app:textSize="22sp"
                 app:strokeColor="#1976D2"
                 app:strokeWidth="1dp"/>
 

@@ -9,9 +9,9 @@
 
     <declare-styleable name="AvatarImageView">
         <attr name="avatarBackgroundColor" format="color"/>
-        <attr name="initialSize" format="dimension"/>
-        <attr name="initialColor" format="color"/>
-        <attr name="initial" format="string"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="text" format="string"/>
         <attr name="state" format="enum">
             <enum name="INITIAL" value="1"/>
             <enum name="IMAGE" value="2"/>

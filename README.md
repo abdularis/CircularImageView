@@ -26,7 +26,7 @@ allprojects {
 
 ~~~xml
 dependencies {
-    compile 'com.github.abdularis:CircularImageView:v2'
+    compile 'com.github.abdularis:CircularImageView:v1.2'
 }
 ~~~
 
@@ -69,8 +69,8 @@ You can choose either for avatar_state, IMAGE or INITIAL to show the first lette
     app:strokeWidth="1dp"
     app:strokeColor="@android:color/white"
     app:avatarBackgroundColor="@color/colorAccent"
-    app:initial="A"
-    app:initialSize="22sp"/>
+    app:text="A"
+    app:textSize="22sp"/>
 
 <com.github.abdularis.civ.AvatarImageView
     android:layout_width="60dp"
@@ -79,16 +79,16 @@ You can choose either for avatar_state, IMAGE or INITIAL to show the first lette
     app:strokeColor="#64B5F6"
     app:strokeWidth="1dp"
     app:avatarBackgroundColor="#8E24AA"
-    app:initial="B"
-    app:initialSize="22sp"/>
+    app:text="B"
+    app:textSize="22sp"/>
 
 <com.github.abdularis.civ.AvatarImageView
     android:layout_width="60dp"
     android:layout_height="60dp"
     app:avatarBackgroundColor="#FDFD00"
-    app:initial="C"
-    app:initialSize="22sp"
-    app:initialColor="#3d3d01"/>
+    app:text="C"
+    app:textSize="22sp"
+    app:textColor="#3d3d01"/>
 
 <com.github.abdularis.civ.AvatarImageView
     android:layout_width="60dp"
@@ -98,8 +98,8 @@ You can choose either for avatar_state, IMAGE or INITIAL to show the first lette
     app:strokeWidth="1dp"
     app:state="IMAGE"
     app:avatarBackgroundColor="#1976D2"
-    app:initial="B"
-    app:initialSize="22sp"/>
+    app:text="B"
+    app:textSize="22sp"/>
 ~~~
 
 Java on view click listener
@@ -133,9 +133,9 @@ These are all attributes that you can use to customize the appearance of CircleI
 
     <declare-styleable name="AvatarImageView">
         <attr name="avatarBackgroundColor" format="color"/>
-        <attr name="initialSize" format="dimension"/>
-        <attr name="initialColor" format="color"/>
-        <attr name="initial" format="string"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="text" format="string"/>
         <attr name="state" format="enum">
             <enum name="INITIAL" value="1"/>
             <enum name="IMAGE" value="2"/>
