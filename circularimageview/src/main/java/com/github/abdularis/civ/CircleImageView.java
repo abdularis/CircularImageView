@@ -14,6 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.ColorInt;
+import android.support.annotation.Dimension;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -179,11 +180,12 @@ public class CircleImageView extends ImageView {
         invalidate();
     }
 
+    @Dimension
     public float getStrokeWidth() {
         return mStrokePaint.getStrokeWidth();
     }
 
-    public void setStrokeWidth(float width) {
+    public void setStrokeWidth(@Dimension float width) {
         mStrokePaint.setStrokeWidth(width);
         invalidate();
     }
