@@ -15,7 +15,7 @@ If you need some explanation of how the code works, I created an article about t
 ## Setup
 - **Step 1** Add repository into root build.gradle
 
-~~~xml
+~~~gradle
 allprojects {
     repositories {
     ...
@@ -29,7 +29,7 @@ allprojects {
 
 > **Note:** there are changes in view xml attributes of **v1.2**, so it's slightly different from previous version (v1.1)
 
-~~~xml
+~~~gradle
 dependencies {
     compile 'com.github.abdularis:CircularImageView:v1.2'
 }
