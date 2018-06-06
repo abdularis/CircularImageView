@@ -9,9 +9,8 @@ If you need some explanation of how the code works, I created an article about t
 * [https://medium.com/@abdularis/android-custom-view-tutorial-create-circle-image-view-cacdd3e986cb](https://medium.com/@abdularis/android-custom-view-tutorial-create-circle-image-view-cacdd3e986cb)
 
 ## Screenshot
-![](demo.gif)
-
-![](screenshots/screenshot.png)
+|![](demo.gif)|![](screenshots/screenshot.png)|
+|-|-|
 
 ## Setup
 - **Step 1** Add repository into root build.gradle
