@@ -27,11 +27,11 @@ allprojects {
 
 - **Step 2** Add library dependency into app build.gradle
 
-> **Note:** there are changes in view xml attributes of **1.2**, so it's slightly different from previous version (v1.1)
+> See the jitpack badge above for the latest version number
 
 ~~~gradle
 dependencies {
-    implementation 'com.github.abdularis:circularimageview:1.2'
+    implementation 'com.github.abdularis:circularimageview:<latest-version>'
 }
 ~~~
 
