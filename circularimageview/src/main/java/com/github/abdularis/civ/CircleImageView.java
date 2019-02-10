@@ -1,5 +1,6 @@
 package com.github.abdularis.civ;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -7,18 +8,23 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Outline;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Dimension;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
 
 public class CircleImageView extends ImageView {
@@ -117,6 +123,10 @@ public class CircleImageView extends ImageView {
         mStrokeBounds.inset(halfStrokeWidth, halfStrokeWidth);
 
         updateBitmapSize();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setOutlineProvider(new CircleImageViewOutlineProvider(mStrokeBounds));
+        }
     }
 
     @Override
@@ -286,5 +296,27 @@ public class CircleImageView extends ImageView {
                 Math.pow(mBitmapDrawBounds.centerX() - x, 2) + Math.pow(mBitmapDrawBounds.centerY() - y, 2)
         );
         return distance <= (mBitmapDrawBounds.width() / 2);
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public class CircleImageViewOutlineProvider extends ViewOutlineProvider {
+
+        private Rect mRect;
+
+        CircleImageViewOutlineProvider(RectF rect) {
+            mRect = new Rect(
+                    (int) rect.left,
+                    (int) rect.top,
+                    (int) rect.right,
+                    (int) rect.bottom
+            );
+        }
+
+        @Override
+        public void getOutline(View view, Outline outline) {
+            outline.setOval(mRect);
+        }
+
     }
 }
