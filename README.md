@@ -5,7 +5,7 @@
 This library provides you circle and avatar imageview for android. it automatically scale and center a bitmap based on the size of the view but does not copy the bitmap itself.
 > this project was inspired by [hdodenhof CircleImageView](https://github.com/hdodenhof/CircleImageView)
 
-If you need some explanation of how the code works, I created an article about this, visit:
+Read this article:
 * [https://medium.com/@abdularis/android-custom-view-tutorial-create-circle-image-view-cacdd3e986cb](https://medium.com/@abdularis/android-custom-view-tutorial-create-circle-image-view-cacdd3e986cb)
 
 ## Screenshot
