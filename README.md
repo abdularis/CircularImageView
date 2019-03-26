@@ -63,7 +63,7 @@ Check also the sample app
 
 ![](screenshots/fig1.gif)
 
-You can choose either for avatar_state, IMAGE or INITIAL to show the first letter (default is INITIAL)
+You can choose either for avatar view state, IMAGE or INITIAL to show the first letter (default is INITIAL)
 
 ~~~xml
 <com.github.abdularis.civ.AvatarImageView
@@ -101,7 +101,7 @@ You can choose either for avatar_state, IMAGE or INITIAL to show the first lette
     android:src="@drawable/figure2"
     app:strokeColor="#1976D2"
     app:strokeWidth="1dp"
-    app:state="IMAGE"
+    app:view_state="IMAGE"
     app:avatarBackgroundColor="#1976D2"
     app:text="B"
     app:textSize="22sp"/>
@@ -141,7 +141,7 @@ These are all attributes that you can use to customize the appearance of CircleI
         <attr name="textSize" format="dimension"/>
         <attr name="textColor" format="color"/>
         <attr name="text" format="string"/>
-        <attr name="state" format="enum">
+        <attr name="view_state" format="enum">
             <enum name="INITIAL" value="1"/>
             <enum name="IMAGE" value="2"/>
         </attr>
