@@ -70,7 +70,7 @@ public class AvatarImageView extends CircleImageView {
             textColor = a.getColor(R.styleable.AvatarImageView_textColor, textColor);
             textSize = a.getDimensionPixelSize(R.styleable.AvatarImageView_textSize, textSize);
             backgroundColor = a.getColor(R.styleable.AvatarImageView_avatarBackgroundColor, backgroundColor);
-            showState = a.getInt(R.styleable.AvatarImageView_state, showState);
+            showState = a.getInt(R.styleable.AvatarImageView_view_state, showState);
 
             a.recycle();
         }

@@ -12,7 +12,7 @@
         <attr name="textSize" format="dimension"/>
         <attr name="textColor" format="color"/>
         <attr name="text" format="string"/>
-        <attr name="state" format="enum">
+        <attr name="view_state" format="enum">
             <enum name="INITIAL" value="1"/>
             <enum name="IMAGE" value="2"/>
         </attr>

@@ -76,7 +76,7 @@
                 android:layout_height="60dp"
                 android:layout_marginLeft="8dp"
                 android:src="@drawable/figure2"
-                app:state="IMAGE"
+                app:view_state="IMAGE"
                 app:avatarBackgroundColor="#1976D2"
                 app:text="B"
                 app:textSize="22sp"
